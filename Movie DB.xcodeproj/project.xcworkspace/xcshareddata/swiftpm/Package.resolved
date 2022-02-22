@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SVProgressHUD",
+        "repositoryURL": "https://github.com/Pimine/SVProgressHUD.git",
+        "state": {
+          "branch": "master",
+          "revision": "6e3209b40b350916fb063cc6e84bfce8fb4c8e27",
+          "version": null
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/SwiftyJSON/SwiftyJSON.git",
+        "state": {
+          "branch": null,
+          "revision": "b3dcd7dbd0d488e1a7077cb33b00f2083e382f07",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
