@@ -18,16 +18,36 @@ class Movie_DBTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testWebServiceSucces() throws {
+        Webservice().getLatestMovies { response in
+            switch response.status {
+            case .failure(_):
+                XCTFail("Should not fail")
+            case .success(let data):
+                let movies = data as? [Movie]
+                XCTAssertGreaterThan(0, movies?.count ?? 0)
+            }
         }
     }
 
+    func testInvaliURL() throws {
+        Webservice().getData(fromURL: URL(string: BASE_URL)!) { response in
+            switch response.status {
+            case .failure(_):
+                break
+            case .success(_):
+                XCTFail("Should not fail")
+            }
+        }
+    }
+    
+    func testInvalidDataForMovie() throws {
+        do {
+            _ = try Movie(data: Data())
+            XCTFail("Should catch error")
+        } catch {
+            print("[KP]: \(error.localizedDescription)")
+        }
+    }
+    
 }
